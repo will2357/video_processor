@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
         title: 'Video Processor App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          //colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF00FF00)),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(0, 255, 0, 1.0)),
         ),
         home: MyHomePage(),
       ),
@@ -47,7 +49,6 @@ class MyHomePage extends StatelessWidget {
           BigCard(pair: pair),
           ElevatedButton(
             onPressed: () {
-              //print('button pressed!');
               appState.getNext();
             },
             child: Text('Next'),
@@ -68,6 +69,14 @@ class BigCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(pair.asLowerCase);
+    final theme = Theme.of(context);
+
+    return Card(
+      color: theme.colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(pair.asLowerCase),
+      ),
+    );
   }
 }
