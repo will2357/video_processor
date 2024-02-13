@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
         title: 'Video Processor App',
         theme: ThemeData(
           useMaterial3: true,
-          //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
           //colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF00FF00)),
-          colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(0, 255, 0, 1.0)),
+          //colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(0, 255, 0, 1.0)),
         ),
         home: MyHomePage(),
       ),
@@ -70,12 +70,15 @@ class BigCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final style = theme.textTheme.displayMedium!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
 
     return Card(
       color: theme.colorScheme.primary,
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Text(pair.asLowerCase),
+        child: Text(pair.asLowerCase, style: style),
       ),
     );
   }
