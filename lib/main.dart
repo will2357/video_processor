@@ -18,10 +18,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          //colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
-          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-          //colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF00FF00)),
-          //colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(0, 255, 0, 1.0)),
         ),
         home: MyHomePage(),
       ),
@@ -47,7 +43,7 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
-  
+
   void removeFavorite(pair) {
     if (favorites.contains(pair)) {
       favorites.remove(pair);
@@ -72,14 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (selectedIndex) {
     case 0:
       page = GeneratorPage();
-      break;
     case 1:
       page = FavoritesPage();
-      break;
     default:
       throw UnimplementedError('no widget for $selectedIndex');
     }
-    
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
