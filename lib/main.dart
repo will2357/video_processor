@@ -47,6 +47,15 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+  
+  void removeFavorite(pair) {
+    if (favorites.contains(pair)) {
+      favorites.remove(pair);
+    } else {
+      print('Favorite ${pair.asLowerCase} not found.');
+    }
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -137,6 +146,9 @@ class FavoritesPage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.favorite),
             title: Text(pair.asLowerCase),
+            onTap: () {
+              appState.removeFavorite(pair);
+            }
           ),
       ]
     );
